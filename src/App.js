@@ -1,9 +1,34 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import { Nav } from './components/Nav'
+
+import { LogIn } from './components/LogIn'
+import { SignUp } from './components/SignUp'
+import { WelcomePage } from './components/WelcomePage'
+import { WorkOut } from './components/WorkOut'
 
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
+    <BrowserRouter>
+      <main> 
+      <Nav/> 
+                 
+        <Switch>
+          <Route path="/" exact>
+            <LogIn/>
+          </Route>
+          <Route path="/signup" exact>
+            <SignUp/>
+          </Route>
+          <Route path="/welcome" exact>
+            <WelcomePage/>
+          </Route>  
+          <Route path="/workout" exact>
+            <WorkOut/>
+          </Route>
+        </Switch>  
+      </main>
+    </BrowserRouter>
   )
 }
