@@ -16,12 +16,13 @@ export const LogIn = () => {
   
     fetch(URL, {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: email, password }),
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json())
       .then(user => {
-          if (user['message']) {
+        console.log(user)
+          if (user.message) {
             setErrorMsg(user.message)
           } else {
             window.localStorage.setItem('userId', user.userId)

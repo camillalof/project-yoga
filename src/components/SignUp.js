@@ -5,6 +5,7 @@ const URL = 'http://localhost:8080/users'
 
 export const SignUp = () => {
   const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
 
@@ -14,7 +15,7 @@ export const SignUp = () => {
 
   fetch(URL, {
     method: 'POST',
-    body: JSON.stringify({ name, password }),
+    body: JSON.stringify({ name, email, password }),
     headers: { 'Content-Type': 'application/json'}
   })
   .then(res => res.json())
@@ -38,6 +39,15 @@ export const SignUp = () => {
               required
               value={name}
               onChange={event => setName(event.target.value)}
+            />
+          </label>
+          <label>
+            email
+            <input
+              required
+              value={email}
+              type='email'
+              onChange={event => setEmail(event.target.value)}
             />
           </label>
           <label>
