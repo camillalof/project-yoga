@@ -4,8 +4,8 @@ import { NavLink, Route } from 'react-router-dom'  //NavLink gives the class act
 
 export const Nav = () => {
   return (
-      <header className="Nav"> 
-      <h2>Nav</h2>
+      <nav> 
+      <h1>Nav</h1>
         <ul>
           <li>
             <NavLink to="/">Log in</NavLink> 
@@ -22,6 +22,6 @@ export const Nav = () => {
           </Route> 
           </li> 
         </ul>
-        </header> 
+      </nav> 
   )
 }

@@ -1,10 +1,17 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
+import { Intro } from './components/Intro'
 import { LogIn } from './components/LogIn'
 import { SignUp } from './components/SignUp'
 import { WelcomePage } from './components/WelcomePage'
 import { WorkOut } from './components/WorkOut'
+
+import { Energy } from './components/Energy'
+import { SelfConfidence } from 'components/SelfConfidence'
+import { Healing } from './components/Healing'
+import { CalmDown } from './components/CalmDown'
+import { Creativity } from './components/Creativity'
 
 export const App = () => {
   return (
@@ -12,6 +19,9 @@ export const App = () => {
       <main>     
         <Switch>
           <Route path="/" exact>
+            <Intro/>
+          </Route>
+          <Route path="/login" exact>
             <LogIn/>
           </Route>
           <Route path="/signup" exact>
@@ -22,6 +32,21 @@ export const App = () => {
           </Route>  
           <Route path="/workout" exact>
             <WorkOut/>
+          </Route>
+          <Route path="/energy" exact>
+            <Energy/>
+          </Route>
+          <Route path="/selfconfidence" exact>
+            <SelfConfidence/>
+          </Route>
+          <Route path="/healing" exact>
+            <Healing/>
+          </Route>
+          <Route path="/calmdown" exact>
+            <CalmDown/>
+          </Route>
+          <Route path="/creativity" exact>
+            <Creativity/>
           </Route>
         </Switch>  
       </main>

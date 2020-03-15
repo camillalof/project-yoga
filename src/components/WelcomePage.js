@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 import { Nav } from './Nav'
 
@@ -35,30 +36,34 @@ export const WelcomePage = () => {
   }, [userId, accessToken])
 
   const handleLogOut = () => {
-    history.push('/') //return to start page
+    history.push('/login') //return to login page
     window.localStorage.clear() // clears data
     setNotAuthorized(true)
     console.log('accessToken')
   }
   
   return (
-    <>
+    <body>
     <Nav/>
-
     {notAuthorized && 
-      <div className='memberSection'> 'You are not authorized' </div>}
-
+      <span className='memberSection'> 'You are not authorized' </span>}
     {!notAuthorized && 
-      <>
-      <h2>Welcome</h2>
-      <h3>Secret message!</h3>
+      <main>
+      <header>
+        <h1>Welcome</h1>
+        <h2>What do you want to acheive with your workout today?</h2>
+      </header>
+      <section classname="linkSection" id="linkSection" role="tabpanel" aria-labelledby="linkSection">
+        <Link to="/energy">Energy</Link>
+        <Link to="/selfconfidence">Self confidence</Link>
+        <Link to="/healing">Healing</Link>
+        <Link to="/calmdown">Calm down</Link>
+        <Link to="/creativity">Creativity</Link>
+      </section>
       <button onClick={handleLogOut} className="backLink">
         Log out
       </button>
-      </>}
-
-    
-    </>
-
+      </main>}
+    </body>
   )
 }
