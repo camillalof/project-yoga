@@ -43,12 +43,12 @@ export const WelcomePage = () => {
   }
   
   return (
-    <body>
+    <>
     <Nav/>
     {notAuthorized && 
       <span className='memberSection'> 'You are not authorized' </span>}
     {!notAuthorized && 
-      <main>
+      <body>
       <header>
         <h1>Welcome</h1>
         <h2>What do you want to acheive with your workout today?</h2>
@@ -63,7 +63,7 @@ export const WelcomePage = () => {
       <button onClick={handleLogOut} className="backLink">
         Log out
       </button>
-      </main>}
-    </body>
+      </body>}
+    </>
   )
 }

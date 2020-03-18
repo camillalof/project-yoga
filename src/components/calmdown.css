@@ -1,0 +1,59 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.carouselContainer  {
+  display: flex;
+}
+
+.slick-track {
+  display: flex;
+  flex-direction: row;
+}
+
+.poses {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  margin: 30px;
+  border-radius: 50%;
+  border-radius: 50px;
+  background: #d8def3;
+  box-shadow:  20px 20px 60px #b8bdcf, 
+             -20px -20px 60px #f8ffff;
+}
+
+.poseTitle {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Roboto Slab', serif;
+  padding: 30px 50px;
+}
+
+h3 {
+  margin: 5px;
+  font-size: 26px;
+}
+
+h4 {
+  margin: 5px;
+  font-size: 20px;
+}
+
+p {
+  font-family: 'Roboto Slab', serif;
+  font-size: 16px;
+  padding: 30px 50px;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  object-fit: contain;
+  height: 400px;
+}

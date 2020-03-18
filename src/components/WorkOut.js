@@ -23,6 +23,7 @@ export const WorkOut = () => {
     <section className="WorkOut">
 
       <h2>Work out</h2>
+
       {images.map((images) => (
         <div className="key" key={images.id}>
         <h3>{images.name}</h3>

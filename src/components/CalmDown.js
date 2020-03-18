@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useParams } from 'react'
+import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
 import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
-const URL = 'http://localhost:8080/chakra'
+import './calmdown.css'
+
 
 export const CalmDown = () => {
   const [rootImages, setRootImages] = useState([]);
@@ -25,7 +27,6 @@ export const CalmDown = () => {
         setRootImages(json)
       })
   } 
-
   const fetchThroat = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6136/asana')
       .then (res => res.json())
@@ -33,7 +34,6 @@ export const CalmDown = () => {
         setThroatImages(json)
       })
   } 
-
   const fetchSacral = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6133/asana')
       .then (res => res.json())
@@ -41,7 +41,6 @@ export const CalmDown = () => {
         setSacralImages(json)
       })
   } 
-
   const fetchSolarPlexus = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6134/asana')
       .then (res => res.json())
@@ -49,7 +48,6 @@ export const CalmDown = () => {
         setSolarPlexusImages(json)
       })
   } 
-
   const fetchHeart = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6135/asana')
       .then (res => res.json())
@@ -57,7 +55,6 @@ export const CalmDown = () => {
         setHeartImages(json)
       })
   } 
-
   const fetchThirdEye = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6137/asana')
       .then (res => res.json())
@@ -65,7 +62,6 @@ export const CalmDown = () => {
         setThirdEyeImages(json)
       })
   }
-
   const fetchCrown = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6138/asana')
       .then (res => res.json())
@@ -73,7 +69,6 @@ export const CalmDown = () => {
         setCrownImages(json)
       })
   }
-
   const fetchStartPose = () => {
     fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
       .then (res => res.json())
@@ -81,7 +76,6 @@ export const CalmDown = () => {
         setStartPoseImage(json)
       })
   }
-
   const fetchFinishPose = () => {
     fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
       .then (res => res.json())
@@ -115,64 +109,117 @@ export const CalmDown = () => {
 
   const startPose = startPoseImage
   const finishPose = finishPoseImage
-  console.log(startPoseImage)
 
+  const finalPoses = [];
+
+  {/* Push into finalPoses array here*/} 
+
+  shuffledRoot.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledThroat.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledSacral.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledSolarPlexus.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledHeart.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledThirdEye.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledCrown.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+
+  console.log("final", finalPoses);  
+  
+
+  const settings = {
+    arrows: true,
+    infinite: false, // Stannar på sista
+    slidesToShow: 1, // visa en åt gången
+    slidesToScroll: 1, // scrolla en framåt
+    autoplay: true,
+    speed: 1000, // speed i själva scrollen
+    autoplaySpeed: 7000, // hur länge varje bild visas
+  } 
   return (
-    <section className="WorkOut">
-      <h2>Inner calm</h2>
-        
-      {/*Start pose always the same/Lotus Pose*/}
-        <h3>{startPoseImage.name}</h3>
-        <h3>{startPoseImage.sanskritname}</h3>
+    <div className="carouselContainer" style={{ width: 1000 }}>
+    <Slider {...settings}>
+      <div className="sliderContainer">   
+      <div className="poses"> 
+        <span className="poseTitle">
+          <h3>{startPoseImage.name}</h3>
+          <h4>{startPoseImage.sanskritname}</h4>
+        </span>
+        <span className="imageContainer">
+          <img src={startPoseImage.image} alt={startPoseImage.name}/>
+        </span>
         <p>{startPoseImage.description}</p>
-        <img src={startPoseImage.image} alt={startPoseImage.name} />
-
-      {shuffledRoot.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledThroat.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledSolarPlexus.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledHeart.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}  
-
-      {/*Finishing pose always the same/Savasana*/}
-        <h3>{finishPoseImage.name}</h3>
-        <h3>{finishPoseImage.sanskritname}</h3>
-        <p>{finishPoseImage.description}</p>
-        <img src={finishPoseImage.image} alt={finishPoseImage.name} />
-
+      </div>
+      </div>
+      <div className="sliderContainer"> 
+      {finalPoses.map((image) => {
+        return (
+        <div className="poses" key={image.id}>
+          <span className="poseTitle">
+            <h3>{image.name}</h3>
+            <h4>{image.sanskritname}</h4>
+          </span>
+          <span className="imageContainer">
+            <img src={image.image} alt={image.name} />
+          </span>
+            <p>{image.description}</p>
+            <p>{image.extraMessage}</p> 
+          </div>   
+          )  
+        })}
+        </div>
+        <div className="sliderContainer"> 
+        <div className="poses"> 
+        <span className="poseTitle">
+          <h3>{finishPoseImage.name}</h3>
+          <h4>{finishPoseImage.sanskritname}</h4>
+        </span>  
+        <span className="imageContainer">   
+          <img src={finishPoseImage.image} alt={finishPoseImage.name} />
+        </span>
+          <p>{finishPoseImage.description}</p>
+        </div>
+        </div>
+      </Slider>
       <button onClick={() => history.goBack()} className="backLink">
         Back
       </button>
 
-    </section>
+    </div>
   )
 }
+
+    
