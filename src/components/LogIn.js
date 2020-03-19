@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
+import './login.css'
+
 const URL = 'http://localhost:8080/sessions'
 
 export const LogIn = () => {
@@ -34,33 +36,36 @@ export const LogIn = () => {
   }
 
   return (
-    <section className="Login">
-      <h2>Login</h2>
+    <article className="loginContainer">
+      <h2>Yoga</h2>
       <form className='loginForm' onSubmit={handleFormSubmit}>
           <div className='loginContainer'>
-            <label >Username/Email  </label>
             <input 
               value={email} 
-              placeholder='Enter Email' 
+              placeholder='Email' 
               type='email'
+              name='email'
               onChange={event => { setEmail(event.target.value) }} 
               required>
             </input>
-            <label>Password</label>
             <input value={password}
-              placeholder='Enter Password' 
+              placeholder='Password' 
               type='password'
+              name='password'
               onChange={event => { setPassword(event.target.value) }} 
               required>
             </input>
               {errorMsg && <div className='error-message'> {errorMsg} </div>}
                 {/* <label>Reset password here</label> */}
-            <button onClick={handleFormSubmit} type="submit">Login</button>
+            <button className="signInButton"onClick={handleFormSubmit} type="submit">LOG IN</button>
             </div>
             </form>
-      <p>
-        <Link to="/signup">Sign up</Link>
-      </p>
-    </section>
+        <section className="signUp">
+          <p>Not a member yet?</p>
+          <button className="signUpLink">
+            <Link to="/signup"> SIGN UP HERE</Link>
+          </button>    
+        </section>  
+    </article>
   )
 }

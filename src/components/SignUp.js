@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+import './signup.css'
+
 const URL = 'http://localhost:8080/users'
 
 export const SignUp = () => {
@@ -24,46 +26,44 @@ export const SignUp = () => {
 }
   
   return (
-    <section className="SignUp">
+    <article className="signUpContainer">
+      <h2>Sign up</h2>
+      <section className="formSection">
+        <form onSubmit={handleSubmit}>
+            <input
+              required
+              value={name}
+              placeholder='Name' 
+              type='name'
+              name='name'
+              onChange={event => setName(event.target.value)}
+            />
+            <input
+              required
+              value={email}
+              placeholder='Email' 
+              type='email'
+              name='email'
+              onChange={event => setEmail(event.target.value)}
+            />
+            <input
+              required
+              value={password}
+              placeholder='Password' 
+              onChange={event => setPassword(event.target.value)}
+              type='password'
+              name='password'
+            />
+          <button className="submitSignUp" type='submit' onClick={handleSubmit}>
+            SIGN UP
+          </button>
+        </form>
       <section className="backLink">
         <button onClick={() => history.goBack()} className="backLink">
           Back
         </button>
+      </section>  
       </section>
-      <section className="formSection">
-        <form onSubmit={handleSubmit}>
-          <h2>Sign up</h2>
-          <label>
-            name
-            <input
-              required
-              value={name}
-              onChange={event => setName(event.target.value)}
-            />
-          </label>
-          <label>
-            email
-            <input
-              required
-              value={email}
-              type='email'
-              onChange={event => setEmail(event.target.value)}
-            />
-          </label>
-          <label>
-            password
-            <input
-              required
-              value={password}
-              onChange={event => setPassword(event.target.value)}
-              type='password'
-            />
-          </label>
-          <button type='submit' onClick={handleSubmit}>
-            SIGN UP
-          </button>
-        </form>
-      </section>
-      </section>
+      </article>
   )
 }

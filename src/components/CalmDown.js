@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom'
 import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
 import './calmdown.css'
-
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 export const CalmDown = () => {
   const [rootImages, setRootImages] = useState([]);
@@ -165,12 +166,12 @@ export const CalmDown = () => {
     infinite: false, // Stannar på sista
     slidesToShow: 1, // visa en åt gången
     slidesToScroll: 1, // scrolla en framåt
-    autoplay: true,
+    autoplay: false,
     speed: 1000, // speed i själva scrollen
     autoplaySpeed: 7000, // hur länge varje bild visas
   } 
   return (
-    <div className="carouselContainer" style={{ width: 1000 }}>
+    <div className="carouselContainer" style={{ width: "100%" }}>
     <Slider {...settings}>
       <div className="sliderContainer">   
       <div className="poses"> 

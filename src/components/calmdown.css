@@ -5,6 +5,7 @@ main {
 
 .carouselContainer  {
   display: flex;
+  flex-direction: row;
 }
 
 .slick-track {
