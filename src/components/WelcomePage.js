@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Link, Route } from 'react-router-dom'
+import { ReactComponent as Flower } from './Flower.svg';
 
 import { Nav } from './Nav'
+
+import './welcomepage.css'
 
 const URL = 'http://localhost:8080/users'
 
@@ -48,17 +51,17 @@ export const WelcomePage = () => {
     {notAuthorized && 
       <span className='memberSection'> 'You are not authorized' </span>}
     {!notAuthorized && 
-      <body>
-      <header>
-        <h1>Welcome</h1>
-        <h2>What do you want to acheive with your workout today?</h2>
+      <body className="welcomeContainer">
+      <header className="welcomepageHeader">
+        <Flower/>
+        <h3>What type of yoga do you need today?</h3>
       </header>
-      <section classname="linkSection" id="linkSection" role="tabpanel" aria-labelledby="linkSection">
-        <Link to="/energy">Energy</Link>
-        <Link to="/selfconfidence">Self confidence</Link>
-        <Link to="/healing">Healing</Link>
-        <Link to="/calmdown">Calm down</Link>
-        <Link to="/creativity">Creativity</Link>
+      <section className="linkSection">
+        <Link className="energy" to="/energy">Energy boost</Link>
+        <Link className="selfconfidence" to="/selfconfidence">Self confidence</Link>
+        <Link className="healing" to="/healing">Healing</Link>
+        <Link className="calmdown" to="/calmdown">Calm down</Link>
+        <Link className="creativity" to="/creativity">Creativity boost</Link>
       </section>
       <button onClick={handleLogOut} className="backLink">
         Log out

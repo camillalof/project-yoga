@@ -159,68 +159,73 @@ export const CalmDown = () => {
   });
 
   console.log("final", finalPoses);  
-  
 
   const settings = {
     arrows: true,
     infinite: false, // Stannar på sista
     slidesToShow: 1, // visa en åt gången
     slidesToScroll: 1, // scrolla en framåt
-    autoplay: false,
+    autoplay: true,
     speed: 1000, // speed i själva scrollen
     autoplaySpeed: 7000, // hur länge varje bild visas
+    adaptiveHeight: true,
+    className: "center",
+    centerMode: true,
+    centerPadding: "60px",
+    cssEase: "linear",
+    vertical: true
+
   } 
   return (
-    <div className="carouselContainer" style={{ width: "100%" }}>
-    <Slider {...settings}>
-      <div className="sliderContainer">   
-      <div className="poses"> 
-        <span className="poseTitle">
-          <h3>{startPoseImage.name}</h3>
-          <h4>{startPoseImage.sanskritname}</h4>
-        </span>
-        <span className="imageContainer">
-          <img src={startPoseImage.image} alt={startPoseImage.name}/>
-        </span>
-        <p>{startPoseImage.description}</p>
-      </div>
-      </div>
-      <div className="sliderContainer"> 
-      {finalPoses.map((image) => {
-        return (
-        <div className="poses" key={image.id}>
+    <div className="carouselContainer">
+      <Slider {...settings}>
+        <div className="sliderContainer">   
+        <div className="poses"> 
           <span className="poseTitle">
-            <h3>{image.name}</h3>
-            <h4>{image.sanskritname}</h4>
+            <h3>{startPoseImage.name}</h3>
+            <h4>{startPoseImage.sanskritname}</h4>
           </span>
           <span className="imageContainer">
-            <img src={image.image} alt={image.name} />
+            <img src={startPoseImage.image} alt={startPoseImage.name}/>
           </span>
-            <p>{image.description}</p>
-            <p>{image.extraMessage}</p> 
-          </div>   
-          )  
-        })}
+          <p className="description">{startPoseImage.description}</p>
         </div>
+        </div>
+      <div className="sliderContainer"> 
+        {finalPoses.map((image) => {
+          return (
+          <div className="poses" key={image.id}>
+            <span className="poseTitle">
+              <h3>{image.name}</h3>
+              <h4>{image.sanskritname}</h4>
+            </span>
+            <span className="imageContainer">
+              <img src={image.image} alt={image.name} />
+            </span>
+              <p className="description">{image.description}</p>
+              <p className="extraMessage">{image.extraMessage}</p> 
+            </div>  
+            )  
+          })}
+          </div>
         <div className="sliderContainer"> 
-        <div className="poses"> 
-        <span className="poseTitle">
-          <h3>{finishPoseImage.name}</h3>
-          <h4>{finishPoseImage.sanskritname}</h4>
-        </span>  
-        <span className="imageContainer">   
-          <img src={finishPoseImage.image} alt={finishPoseImage.name} />
-        </span>
-          <p>{finishPoseImage.description}</p>
-        </div>
-        </div>
-      </Slider>
-      <button onClick={() => history.goBack()} className="backLink">
-        Back
-      </button>
-
-    </div>
-  )
-}
+          <div className="poses"> 
+          <span className="poseTitle">
+            <h3>{finishPoseImage.name}</h3>
+            <h4>{finishPoseImage.sanskritname}</h4>
+          </span>  
+          <span className="imageContainer">   
+            <img src={finishPoseImage.image} alt={finishPoseImage.name} />
+          </span>
+          <p className="description">{finishPoseImage.description}</p>
+          </div>
+          </div>
+        </Slider>
+        <button onClick={() => history.goBack()} className="backLink">
+          Back
+        </button>
+      </div>
+    )
+  }
 
     

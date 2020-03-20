@@ -1,0 +1,35 @@
+footer {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(145deg, #fffbff, #dfd4e4);
+  box-shadow:  20px 20px 60px #d3c8d7, 
+             -20px -20px 60px #ffffff;
+  position: relative;
+  height: 20%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  width: 100%;
+}
+
+svg {
+ width: 100px;
+ height: auto;
+}
+
+@media (min-width: 668px) {
+  svg {
+    width: 150px;
+    height: auto;
+   }
+}
+
+@media (min-width: 900px) {
+  svg {
+    width: 250px;
+    height: auto;
+   }
+  footer {
+   padding-top: 5rem;
+   padding-bottom: 7rem;
+  } 
+}

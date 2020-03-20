@@ -1,5 +1,3 @@
-/*BACKGROUND*/
-
 main {
   display: flex;
   justify-content: center;
@@ -7,10 +5,12 @@ main {
 
 section.introContainer  {
   position: relative;  
-  display: flex;  
+  display: flex; 
+  flex-direction: column; 
   justify-content: center;
+  align-items: center;
   z-index: 1; 
-  background-image: linear-gradient(145deg, #e4d3fa, #c0b1d3); 
+  background-image: linear-gradient(145deg, #e7e8f6, #e7e7f6); 
 }
 
 video {
@@ -18,35 +18,143 @@ video {
   backdrop-filter: opacity(0.5);
 }
 
-/*NAVBAR*/
 
-nav {
+nav.introNav {
   width: 100%;  
   position: absolute;  
+  top: 5%;
   z-index: 3;  
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+h1 {
+  text-align: center;
+  z-index: inherit;
+}
+
+ul {
+  list-style-type: none;
 }
 
 ul a{
   text-decoration: none;
-  list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   z-index: 4;
+  display: none;
 }
 
-a.joinLink {
-padding: 2rem 1rem;
-top: 45%; 
+button.joinLink {
+padding: 1rem 2rem;
+top: 50%; 
+width: fit-content;
 position: absolute;    
 z-index: 2;     
 color: black;    
 text-decoration: none;    
-border-radius: 50%;
-background: linear-gradient(145deg, #e4d3fa, #c0b1d3);
-box-shadow:  41px 41px 82px #b5a7c7, 
-  -41px -41px 82px #f5e3ff;
+border-radius: 50px;
+background: #e7e7f6;
+box-shadow:  20px 20px 60px #a396b3, 
+             -20px -20px 60px #ddccf3;          
 }  
 
+.joinLink a {
+  color: black;    
+  text-decoration: none;   
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif; 
+  } 
+
+section.information {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 60%;
+}
+
+p.introLogIn {
+  padding-top: 50%;
+}
+
+button.introLogInLink a{
+  text-decoration: none;  
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: green;
+  font-weight: bolder;
+  border-radius: 50px;
+}
+
+button.introLogInLink {
+  border: transparent;
+  width: fit-content;
+  background: transparent; 
+}
+
+footer {
+  display: none;
+}
+
+/** MEDIA-QUERIES **/
+
+@media (min-width: 668px) {
+
+button.joinLink {
+  top: 20%;
+}
+
+section.information {
+  padding-bottom: unset;
+}
+
+footer {
+  display: flex;
+}
+
+.information p {
+  width: 80%;
+  font-size: 20px;
+}
+
+p.introLogIn {
+  padding-top: 15%;
+  font-size: 20px;
+}
+
+button.introLogInLink {
+  padding-bottom: 5%;
+}
+}
+
+@media (min-width: 900px) {
+
+h1 {
+  display: none;
+}  
+nav.introNav {
+  width: 100%;  
+  position: absolute;  
+  z-index: 3;  
+  font-weight: bolder;
+} 
+ul{
+  padding: 0px;
+} 
+ul a{
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: black;
+}
+li {
+  float: left;
+}
+
+}

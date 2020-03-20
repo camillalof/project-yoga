@@ -2,13 +2,8 @@
   font-family: 'Roboto Slab', serif;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #c9c1d3;
-  box-shadow:  20px 20px 60px #aba4b3, 
-               -20px -20px 60px #e7def3;            
+body {
+  background: #e7e7f6;
 }
 
 h2 {
@@ -18,15 +13,18 @@ h2 {
 }
 
 .loginContainer {
+    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 16px;
+    align-items: center;  
 }
 
-.loginForm {
-  width: 100%;
+form.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
 
 input {
@@ -48,9 +46,9 @@ button.signInButton {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   border-radius: 50px;
-  background: #c9c1d3;
-  box-shadow:  20px 20px 60px #aba4b3, 
-             -20px -20px 60px #e7def3;         
+  background: #e7e7f6;
+  box-shadow:  20px 20px 60px #a396b3, 
+             -20px -20px 60px #ddccf3;         
 }
 
 .signUp {
@@ -69,7 +67,7 @@ button.signUpLink a{
   color: green;
   font-weight: bolder;
   border-radius: 50px;
-  background: #c9c1d3;
+  background: #e7e7f6;
   box-shadow:  20px 20px 60px #aba4b3, 
              -20px -20px 60px #e7def3; 
 }

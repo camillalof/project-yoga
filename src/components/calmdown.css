@@ -6,6 +6,7 @@ main {
 .carouselContainer  {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .slick-track {
@@ -43,7 +44,13 @@ h4 {
   font-size: 20px;
 }
 
-p {
+p.description {
+  font-family: 'Roboto Slab', serif;
+  font-size: 16px;
+  padding: 30px 50px;
+}
+
+p.extraMessage {
   font-family: 'Roboto Slab', serif;
   font-size: 16px;
   padding: 30px 50px;

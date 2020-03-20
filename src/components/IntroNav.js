@@ -5,8 +5,11 @@ import { Link, Route } from 'react-router-dom'  //NavLink gives the class active
 export const IntroNav = () => {
   return (
       <nav className="introNav"> 
-      <h1>Yoga</h1>
+      <h1>Online yoga classes</h1>
         <ul>
+          <li>
+            <p>Online yoga classes</p>
+          </li>
           <li>
             <Link to="/login">Log in</Link> 
           </li> 
