@@ -1,6 +1,5 @@
 * {
   font-family: 'Roboto Slab', serif;
-  width: 100%;
 }
 
 main {
@@ -14,10 +13,12 @@ main {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  width: 90%;
+  width: 100%;
+  padding: 16px;
 }
 
-h2 {
+.signUpContainer h2 {
+  width: 100%;
   font-size: 35px;
   font-weight: bolder;
   padding: 30px 0px 5px 0px;
@@ -28,6 +29,7 @@ section.formSection {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  width: 100%;
 }
 
 input {
@@ -48,7 +50,7 @@ button:hover {
 
 button.submitSignUp {
   width: 40%;
-  padding: 1rem 2rem;
+  padding: 1rem;
   margin: 30px 10px 10px 10px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -63,8 +65,8 @@ button.submitSignUp {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  width: 100%;
-  padding: 100px;
+  width: 90%;
+  padding: 100px 0px;
 }  
 
 button.backLink{
@@ -74,4 +76,10 @@ button.backLink{
   color: green;
   font-weight: bolder;
   padding: 50px 16px 300px 16px;
+}
+
+@media (min-width: 900px) {
+  .signUpContainer {
+    max-width: 768px;
+  }
 }

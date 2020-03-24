@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useParams } from 'react'
+import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
 import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
@@ -12,6 +13,9 @@ export const Energy = () => {
   const [heartImages, setHeartImages] = useState([]);
   const [thirdEyeImages, setThirdEyeImages] = useState([]);
   const [crownImages, setCrownImages] = useState([]);
+
+  const [startPoseImage, setStartPoseImage] = useState([]);
+  const [finishPoseImage, setFinishPoseImage] = useState([]);
 
   const history = useHistory()
 
@@ -70,6 +74,22 @@ export const Energy = () => {
         setCrownImages(json)
       })
   }
+
+  const fetchStartPose = () => {
+    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+      .then (res => res.json())
+      .then((json) => { 
+        setStartPoseImage(json)
+      })
+  }
+
+  const fetchFinishPose = () => {
+    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+      .then (res => res.json())
+      .then((json) => { 
+        setFinishPoseImage(json)
+      })
+  }
      
   useEffect(() => {
     fetchThroat()
@@ -79,6 +99,9 @@ export const Energy = () => {
     fetchThirdEye()
     fetchCrown()
     fetchRoot()
+
+    fetchStartPose()
+    fetchFinishPose()
   }, [])
 
   {/* Change the amount of poses per chakra/category here*/} 
@@ -91,58 +114,102 @@ export const Energy = () => {
   const shuffledThirdEye= shuffleAndPick(thirdEyeImages, 1)
   const shuffledCrown= shuffleAndPick(crownImages, 1)
 
+  const startPose = startPoseImage
+  const finishPose = finishPoseImage
+
+  const finalPoses = [];
+
+  {/* Push into finalPoses array here*/} 
+  
+
+  finalPoses.push(startPose);
+
+  shuffledRoot.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledThroat.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledSacral.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledSolarPlexus.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledHeart.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledThirdEye.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledCrown.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+
+  finalPoses.push(finishPose);  
+
+  console.log("final", finalPoses);  
+
+  {/* Settings for carousel here */} 
+
+  const settings = {
+    arrows: true,
+    infinite: false, // Stannar på sista
+    slidesToShow: 1, // visa en åt gången
+    slidesToScroll: 1, // scrolla en framåt
+    autoplay: true,
+    speed: 1000, // speed i själva scrollen
+    autoplaySpeed: 7000, // hur länge varje bild visas
+    adaptiveHeight: true,
+    className: "center",
+    centerMode: true,
+    centerPadding: "60px",
+  } 
+
   return (
-    <section className="WorkOut">
-      <h2>Energy</h2>
-
-      {shuffledThroat.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledSacral.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledSolarPlexus.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledHeart.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
-
-      {shuffledThirdEye.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}  
-
-      <button onClick={() => history.goBack()} className="backLink">
-        Back
-      </button>
-    </section>
-  )
-}  
+    <div className="carouselContainer">
+      <Slider {...settings}>
+        {finalPoses.map((image) => {
+          return (
+          <div className="poses" key={image.id}>
+            <span className="poseTitle">
+              <h3>{image.name}</h3>
+              <h4>{image.sanskritname}</h4>
+            </span>
+            <span className="imageContainer">
+              <img src={image.image} alt={image.name} />
+            </span>
+              <p className="description">{image.description}</p>
+              <p className="extraMessage">{image.extraMessage}</p> 
+            </div>  
+            )  
+          })}
+      </Slider>
+        <button onClick={() => history.goBack()} className="backLink">
+          Back
+        </button>
+      </div>
+    )
+}
+   

@@ -4,19 +4,23 @@ import { Link, Route } from 'react-router-dom'  //NavLink gives the class active
 
 export const IntroNav = () => {
   return (
+    <span className="introNavContainer">
+      <h1 className="introNavH1">Online yoga classes</h1>
       <nav className="introNav"> 
-      <h1>Online yoga classes</h1>
-        <ul>
+        <ul className="aboutSection">
           <li>
-            <p>Online yoga classes</p>
-          </li>
+            <Link to="/">ABOUT</Link> 
+          </li> 
+        </ul>    
+        <ul className="introNavUl">
           <li>
-            <Link to="/login">Log in</Link> 
+            <Link to="/login">LOG IN</Link> 
           </li> 
           <li>
-            <Link to="/signup">Sign up</Link>
+            <Link to="/signup">SIGN UP</Link>
           </li>
-        </ul>
+        </ul> 
       </nav> 
+    </span>  
   )
 }

@@ -7,6 +7,8 @@ import './calmdown.css'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+const URL = 'http://localhost:8080/users'
+
 export const CalmDown = () => {
   const [rootImages, setRootImages] = useState([]);
   const [throatImages, setThroatImages] = useState([]);
@@ -19,7 +21,44 @@ export const CalmDown = () => {
   const [startPoseImage, setStartPoseImage] = useState([]);
   const [finishPoseImage, setFinishPoseImage] = useState([]);
 
+  const accessToken = window.localStorage.getItem('accessToken')
+  const userId = window.localStorage.getItem('userId')
+
+  const [notAuthorized, setNotAuthorized] = useState(false)
+  const [user, setUser] = useState(null)
+
   const history = useHistory()
+
+  {/* AUTHORIZATION */}
+
+  useEffect(() => {
+    fetch(`${URL}/${userId}`, {
+    method: 'GET', 
+    headers: {
+      Authorization: accessToken
+    }
+  })
+  .then()
+  .then((user) => {
+    if (user.loggedOut) {
+      setNotAuthorized(true)
+    } else {
+      setUser(user)
+    }
+  })
+  .catch((err) => {
+    setNotAuthorized(true)
+  })
+  }, [userId, accessToken])
+
+  const handleLogOut = () => {
+    history.push('/login') //return to login page
+    window.localStorage.clear() // clears data
+    setNotAuthorized(true)
+    console.log('accessToken')
+  }
+
+  {/* FETCH POSES */}
 
   const fetchRoot = () => {
     fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6132/asana')
@@ -114,6 +153,9 @@ export const CalmDown = () => {
   const finalPoses = [];
 
   {/* Push into finalPoses array here*/} 
+  
+
+  finalPoses.push(startPose);
 
   shuffledRoot.forEach(pose => {
     finalPoses.push(pose);
@@ -158,10 +200,37 @@ export const CalmDown = () => {
     }
   });
 
+  finalPoses.push(finishPose);  
+
   console.log("final", finalPoses);  
 
+  {/* Settings for carousel here */} 
+
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", color: "black", right: "10%" }}
+        onClick={onClick}
+      />
+    );
+  }
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", color: "black", left: "10%" }}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
+    accessibility: true,
     arrows: true,
+    centerPadding: 0,
     infinite: false, // Stannar på sista
     slidesToShow: 1, // visa en åt gången
     slidesToScroll: 1, // scrolla en framåt
@@ -171,27 +240,24 @@ export const CalmDown = () => {
     adaptiveHeight: true,
     className: "center",
     centerMode: true,
-    centerPadding: "60px",
-    cssEase: "linear",
-    vertical: true
-
+    useCSS: true,
+    nextArrow: <SampleNextArrow/>,
+    prevArrow: <SamplePrevArrow />
   } 
+
   return (
+    <>
+    <nav className="workOutNav">
+      <h3>Calm down</h3>
+      <button onClick={() => history.goBack()} className="backLink">
+        Back
+      </button>
+    </nav>
     <div className="carouselContainer">
+      {notAuthorized && 
+        <span className='memberSection'> 'You are not authorized' </span>}
+      {!notAuthorized && 
       <Slider {...settings}>
-        <div className="sliderContainer">   
-        <div className="poses"> 
-          <span className="poseTitle">
-            <h3>{startPoseImage.name}</h3>
-            <h4>{startPoseImage.sanskritname}</h4>
-          </span>
-          <span className="imageContainer">
-            <img src={startPoseImage.image} alt={startPoseImage.name}/>
-          </span>
-          <p className="description">{startPoseImage.description}</p>
-        </div>
-        </div>
-      <div className="sliderContainer"> 
         {finalPoses.map((image) => {
           return (
           <div className="poses" key={image.id}>
@@ -207,25 +273,9 @@ export const CalmDown = () => {
             </div>  
             )  
           })}
-          </div>
-        <div className="sliderContainer"> 
-          <div className="poses"> 
-          <span className="poseTitle">
-            <h3>{finishPoseImage.name}</h3>
-            <h4>{finishPoseImage.sanskritname}</h4>
-          </span>  
-          <span className="imageContainer">   
-            <img src={finishPoseImage.image} alt={finishPoseImage.name} />
-          </span>
-          <p className="description">{finishPoseImage.description}</p>
-          </div>
-          </div>
-        </Slider>
-        <button onClick={() => history.goBack()} className="backLink">
-          Back
-        </button>
+      </Slider>}
       </div>
+      </>  
     )
-  }
-
+}
     

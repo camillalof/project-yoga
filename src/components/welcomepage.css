@@ -38,6 +38,10 @@ body {
   width: 150px;
 }
 
+p.yogaDescription {
+  display: none;
+}  
+
 a.energy {  
   border-radius: 50px;
   font-family: 'Roboto', sans-serif;
@@ -136,7 +140,168 @@ a.creativity:hover {
   margin: 1rem;           
 }
 button.backLink {
-  color: black;
+  color: green;
   background: transparent;
   border: transparent;
+}
+
+/** MEDIA-QUERIES **/
+
+@media (min-width: 668px) {
+
+header.welcomepageHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0px 100px 0px;
+}  
+
+section.linkSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 80%;
+} 
+
+.welcomeContainer {
+  display: flex;
+  align-items: center;
+} 
+
+.linkSection a {
+  font-size: 20px;
+  width: 200px;
+  padding: 1rem 2rem;
+  margin: 30px 20px;
+}
+
+header.welcomepageHeader h3 {
+  font-size: 35px;
+}
+
+button.backLink {
+  font-size: 20px;
+  padding-top: 90px;
+}
+}
+
+@media (min-width: 900px) {
+
+.linkSection a {
+  font-size: 25px;
+  text-align: start;
+  width: 250px;
+  height: 120px;
+  justify-content: space-around;
+}  
+
+p.yogaDescription {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  text-align: start;
+}
+
+a.energy { 
+  border-radius: unset; 
+  font-family: 'Roboto', sans-serif;
+  background: #e7e7f6;
+  box-shadow:  20px 20px 60px #d1607f, 
+               -20px -20px 60px #ff82ab;
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.energy:hover { 
+  border-radius: unset; 
+  font-family: 'Roboto', sans-serif;
+  background: #ff82ab;
+  box-shadow:  20px 20px 60px #d1607f, 
+               -20px -20px 60px #ff82ab;
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.selfconfidence {  
+  border-radius: unset;
+  font-family: 'Roboto', sans-serif;
+  background: #e7e7f6;
+  box-shadow:  20px 20px 60px #d1ca54, 
+             -20px -20px 60px #ffff72;
+  padding: 1rem 2rem;
+  margin: 1rem;            
+}
+a.selfconfidence:hover {  
+  border-radius: unset;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #ffff72;
+  box-shadow:  20px 20px 60px #d1ca54, 
+             -20px -20px 60px #ffff72;
+  padding: 1rem 2rem;
+  margin: 1rem;            
+}
+a.healing {  
+  border-radius: unset;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #e7e7f6;
+  box-shadow:  20px 20px 60px #82d15e, 
+             -20px -20px 60px #b0ff80; 
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.healing:hover { 
+  border-radius: unset; 
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #b0ff80;
+  box-shadow:  20px 20px 60px #82d15e, 
+             -20px -20px 60px #b0ff80; 
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.calmdown { 
+  border-radius: unset; 
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #e7e7f6;
+  box-shadow:  20px 20px 60px #835cd1, 
+             -20px -20px 60px #b17cff;
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.calmdown:hover {  
+  border-radius: unset;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #b17cff;
+  box-shadow:  20px 20px 60px #835cd1, 
+             -20px -20px 60px #b17cff;
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.creativity { 
+  border-radius: unset; 
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #e7e7f6;
+  box-shadow:  20px 20px 60px #d18132, 
+             -20px -20px 60px #ffaf44;
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+a.creativity:hover {
+  border-radius: unset;  
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  background: #ffaf44;
+  box-shadow:  20px 20px 60px #d18132, 
+             -20px -20px 60px #ffaf44;
+  padding: 1rem 2rem;
+  margin: 1rem;           
+}
+
+button.backLink {
+  font-size: 20px;
+}
 }

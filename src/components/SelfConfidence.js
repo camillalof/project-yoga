@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useParams } from 'react'
+import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
 import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
@@ -12,6 +13,9 @@ export const SelfConfidence = () => {
   const [heartImages, setHeartImages] = useState([]);
   const [thirdEyeImages, setThirdEyeImages] = useState([]);
   const [crownImages, setCrownImages] = useState([]);
+
+  const [startPoseImage, setStartPoseImage] = useState([]);
+  const [finishPoseImage, setFinishPoseImage] = useState([]);
 
   const history = useHistory()
 
@@ -70,6 +74,22 @@ export const SelfConfidence = () => {
         setCrownImages(json)
       })
   }
+
+  const fetchStartPose = () => {
+    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+      .then (res => res.json())
+      .then((json) => { 
+        setStartPoseImage(json)
+      })
+  }
+
+  const fetchFinishPose = () => {
+    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+      .then (res => res.json())
+      .then((json) => { 
+        setFinishPoseImage(json)
+      })
+  }
      
   useEffect(() => {
     fetchThroat()
@@ -79,6 +99,9 @@ export const SelfConfidence = () => {
     fetchThirdEye()
     fetchCrown()
     fetchRoot()
+
+    fetchStartPose()
+    fetchFinishPose()
   }, [])
 
   {/* Change the amount of poses per chakra/category here. And remember to correct in under return*/} 
@@ -91,58 +114,102 @@ export const SelfConfidence = () => {
   const shuffledThirdEye= shuffleAndPick(thirdEyeImages, )
   const shuffledCrown= shuffleAndPick(crownImages, )
 
-  return (
-    <section className="WorkOut">
-      <h2>Self confidence</h2>
+  const startPose = startPoseImage
+  const finishPose = finishPoseImage
 
-      {shuffledRoot.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
+  const finalPoses = [];
 
-      {shuffledThroat.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
+  {/* Push into finalPoses array here*/} 
+  
 
-      {shuffledSacral.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
+  finalPoses.push(startPose);
 
-      {shuffledSolarPlexus.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))}
+  shuffledRoot.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledThroat.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledSacral.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledSolarPlexus.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledHeart.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledThirdEye.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
+  shuffledCrown.forEach(pose => {
+    finalPoses.push(pose);
+    if (pose.repeat) {
+      finalPoses.push({ ...pose, extraMessage: "Change side!" });
+    }
+  });
 
-      {shuffledHeart.map((image) => (
-        <div className="key" key={image.id}>
-        <h3>{image.name}</h3>
-        <h3>{image.sanskritname}</h3>
-        <p>{image.description}</p>
-        <img src={image.image} alt={image.name} />
-        </div> 
-      ))} 
+  finalPoses.push(finishPose);  
+
+  console.log("final", finalPoses);  
+
+{/* Settings for carousel here */} 
+
+const settings = {
+  arrows: true,
+  infinite: false, // Stannar på sista
+  slidesToShow: 1, // visa en åt gången
+  slidesToScroll: 1, // scrolla en framåt
+  autoplay: true,
+  speed: 1000, // speed i själva scrollen
+  autoplaySpeed: 7000, // hur länge varje bild visas
+  adaptiveHeight: true,
+  className: "center",
+  centerMode: true,
+  centerPadding: "60px",
+} 
+
+return (
+  <div className="carouselContainer">
+    <Slider {...settings}>
+      {finalPoses.map((image) => {
+        return (
+        <div className="poses" key={image.id}>
+          <span className="poseTitle">
+            <h3>{image.name}</h3>
+            <h4>{image.sanskritname}</h4>
+          </span>
+          <span className="imageContainer">
+            <img src={image.image} alt={image.name} />
+          </span>
+            <p className="description">{image.description}</p>
+            <p className="extraMessage">{image.extraMessage}</p> 
+          </div>  
+          )  
+        })}
+    </Slider>
       <button onClick={() => history.goBack()} className="backLink">
         Back
       </button>
-
-    </section>
+    </div>
   )
 }
+ 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './signup.css'
 
@@ -54,11 +55,11 @@ export const SignUp = () => {
               type='password'
               name='password'
             />
-          <button className="submitSignUp" type='submit' onClick={handleSubmit}>
-            SIGN UP
-          </button>
+            <button className="submitSignUp" type='submit' onClick={handleSubmit}>
+              SIGN UP
+            </button>
         </form>
-      <section className="backLink">
+      <section className="backLink"> 
         <button onClick={() => history.goBack()} className="backLink">
           Back
         </button>
