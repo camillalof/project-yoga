@@ -245,14 +245,18 @@ export const CalmDown = () => {
     prevArrow: <SamplePrevArrow />
   } 
 
-  return (
-    <>
-    <nav className="workOutNav">
+      {/*<nav className="workOutNav">
       <h3>Calm down</h3>
       <button onClick={() => history.goBack()} className="backLink">
         Back
       </button>
-    </nav>
+      </nav>*/}
+
+  return (
+    <>
+    {notAuthorized && 
+      <span className='memberSection'> 'You are not authorized' </span>}
+    {!notAuthorized &&   
     <div className="carouselContainer">
       {notAuthorized && 
         <span className='memberSection'> 'You are not authorized' </span>}
@@ -274,7 +278,7 @@ export const CalmDown = () => {
             )  
           })}
       </Slider>}
-      </div>
+      </div>}
       </>  
     )
 }
