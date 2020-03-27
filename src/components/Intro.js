@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
@@ -26,15 +26,15 @@ return (
       loop={true}
       style={{filter: "opacity(0.5)"}}
     /> 
-      <span className="introLoginMember">
-        <p className="introLogIn"> Already a member</p>
-        <button className="introLogInLink">
-          <Link to="/login">
-            <p>LOG IN HERE</p>
-          </Link>
-        </button>
-      </span>  
-      <Footer/>
+    <span className="introLoginMember">
+      <p className="introLogIn"> Already a member</p>
+      <button className="introLogInLink">
+        <Link to="/login">
+          <p>LOG IN HERE</p>
+        </Link>
+      </button>
+    </span>  
+    <Footer/>
     </section> 
   </> 
   )

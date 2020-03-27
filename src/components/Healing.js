@@ -20,71 +20,63 @@ export const Healing = () => {
   const history = useHistory()
 
   const fetchRoot = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6132/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e07f/asana')
       .then (res => res.json())
       .then((json) => { 
         setRootImages(json)
       })
   } 
-
   const fetchThroat = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6136/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e083/asana')
       .then (res => res.json())
       .then((json) => { 
         setThroatImages(json)
       })
   } 
-
   const fetchSacral = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6133/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e080/asana')
       .then (res => res.json())
       .then((json) => { 
         setSacralImages(json)
       })
   } 
-
   const fetchSolarPlexus = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6134/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e081/asana')
       .then (res => res.json())
       .then((json) => { 
         setSolarPlexusImages(json)
       })
   } 
-
   const fetchHeart = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6135/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e082/asana')
       .then (res => res.json())
       .then((json) => { 
         setHeartImages(json)
       })
   } 
-
   const fetchThirdEye = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6137/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e084/asana')
       .then (res => res.json())
       .then((json) => { 
         setThirdEyeImages(json)
       })
   }
-
   const fetchCrown = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6138/asana')
+    fetch('http://localhost:8080/chakra/5e7b66a7b6175e709aa0e085/asana')
       .then (res => res.json())
       .then((json) => { 
         setCrownImages(json)
       })
   }
-
   const fetchStartPose = () => {
-    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+    fetch('http://localhost:8080/asana/5e7b66a7b6175e709aa0e0af')
       .then (res => res.json())
       .then((json) => { 
         setStartPoseImage(json)
       })
   }
-
   const fetchFinishPose = () => {
-    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+    fetch('http://localhost:8080/asana/5e7b66a7b6175e709aa0e0b0')
       .then (res => res.json())
       .then((json) => { 
         setFinishPoseImage(json)
@@ -192,23 +184,23 @@ return (
     <Slider {...settings}>
       {finalPoses.map((image) => {
         return (
-        <div className="poses" key={image.id}>
-          <span className="poseTitle">
-            <h3>{image.name}</h3>
-            <h4>{image.sanskritname}</h4>
-          </span>
-          <span className="imageContainer">
-            <img src={image.image} alt={image.name} />
-          </span>
-            <p className="description">{image.description}</p>
-            <p className="extraMessage">{image.extraMessage}</p> 
-          </div>  
-          )  
-        })}
+          <div className="poses" key={image.id}>
+            <span className="poseTitle">
+              <h3>{image.name}</h3>
+              <h4>{image.sanskritname}</h4>
+            </span>
+            <span className="imageContainer">
+              <img src={image.image} alt={image.name} />
+            </span>
+              <p className="description">{image.description}</p>
+              <p className="extraMessage">{image.extraMessage}</p> 
+              <button onClick={() => history.goBack()} className="backLink">
+                Back
+              </button>
+          </div>    
+        )  
+      })}
     </Slider>
-      <button onClick={() => history.goBack()} className="backLink">
-        Back
-      </button>
     </div>
   )
 }

@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Link, Route } from 'react-router-dom'
-import { ReactComponent as BlackFlower } from './BlackFlower.svg';
-
-import { Nav } from './Nav'
 
 import './welcomepage.css'
-import './slick.css'
 
 const URL = 'http://localhost:8080/users'
 
@@ -50,7 +46,6 @@ export const WelcomePage = () => {
   
   return (
     <>
-    <Nav/>
     {notAuthorized && 
       <span className='memberSection'> 'You are not authorized' </span>}
     {!notAuthorized && 

@@ -5,7 +5,6 @@ import { Intro } from './components/Intro'
 import { LogIn } from './components/LogIn'
 import { SignUp } from './components/SignUp'
 import { WelcomePage } from './components/WelcomePage'
-import { WorkOut } from './components/WorkOut'
 
 import { Energy } from './components/Energy'
 import { SelfConfidence } from 'components/SelfConfidence'
@@ -30,9 +29,6 @@ export const App = () => {
           <Route path="/welcome" exact>
             <WelcomePage/>
           </Route>  
-          <Route path="/workout" exact>
-            <WorkOut/>
-          </Route>
           <Route path="/energy" exact>
             <Energy/>
           </Route>

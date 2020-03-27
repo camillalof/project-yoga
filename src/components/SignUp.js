@@ -67,6 +67,6 @@ export const SignUp = () => {
         </button>
       </section>  
       </section>
-      </article>
+    </article>
   )
 }

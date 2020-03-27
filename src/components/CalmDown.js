@@ -4,10 +4,8 @@ import { useHistory } from 'react-router-dom'
 import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
 import './calmdown.css'
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
 
-const URL = 'http://localhost:8080/users'
+const URL = 'http://https://api-project-yoga-poses.herokuapp.com/users'
 
 export const CalmDown = () => {
   const [rootImages, setRootImages] = useState([]);
@@ -61,63 +59,63 @@ export const CalmDown = () => {
   {/* FETCH POSES */}
 
   const fetchRoot = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6132/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e07f/asana')
       .then (res => res.json())
       .then((json) => { 
         setRootImages(json)
       })
   } 
   const fetchThroat = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6136/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e083/asana')
       .then (res => res.json())
       .then((json) => { 
         setThroatImages(json)
       })
   } 
   const fetchSacral = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6133/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e080/asana')
       .then (res => res.json())
       .then((json) => { 
         setSacralImages(json)
       })
   } 
   const fetchSolarPlexus = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6134/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e081/asana')
       .then (res => res.json())
       .then((json) => { 
         setSolarPlexusImages(json)
       })
   } 
   const fetchHeart = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6135/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e082/asana')
       .then (res => res.json())
       .then((json) => { 
         setHeartImages(json)
       })
   } 
   const fetchThirdEye = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6137/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e084/asana')
       .then (res => res.json())
       .then((json) => { 
         setThirdEyeImages(json)
       })
   }
   const fetchCrown = () => {
-    fetch('http://localhost:8080/chakra/5e6c096afe1b75409f5c6138/asana')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e085/asana')
       .then (res => res.json())
       .then((json) => { 
         setCrownImages(json)
       })
   }
   const fetchStartPose = () => {
-    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/asana/5e7b66a7b6175e709aa0e0af')
       .then (res => res.json())
       .then((json) => { 
         setStartPoseImage(json)
       })
   }
   const fetchFinishPose = () => {
-    fetch('http://localhost:8080/asana/5e6c096afe1b75409f5c6162')
+    fetch('http://https://api-project-yoga-poses.herokuapp.com/asana/5e7b66a7b6175e709aa0e0b0')
       .then (res => res.json())
       .then((json) => { 
         setFinishPoseImage(json)
@@ -245,18 +243,8 @@ export const CalmDown = () => {
     prevArrow: <SamplePrevArrow />
   } 
 
-      {/*<nav className="workOutNav">
-      <h3>Calm down</h3>
-      <button onClick={() => history.goBack()} className="backLink">
-        Back
-      </button>
-      </nav>*/}
-
   return (
-    <>
-    {notAuthorized && 
-      <span className='memberSection'> 'You are not authorized' </span>}
-    {!notAuthorized &&   
+    <> 
     <div className="carouselContainer">
       {notAuthorized && 
         <span className='memberSection'> 'You are not authorized' </span>}
@@ -274,12 +262,15 @@ export const CalmDown = () => {
             </span>
               <p className="description">{image.description}</p>
               <p className="extraMessage">{image.extraMessage}</p> 
+              <button onClick={() => history.goBack()} className="backLink">
+              LOG OUT
+              </button>
             </div>  
-            )  
-          })}
+          )  
+        })}
       </Slider>}
-      </div>}
-      </>  
-    )
+    </div>
+    </>  
+  )
 }
     

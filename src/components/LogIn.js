@@ -59,7 +59,7 @@ export const LogIn = () => {
                 {/* <label>Reset password here</label> */}
             <button className="signInButton"onClick={handleFormSubmit} type="submit">LOG IN</button>
             </div>
-            </form>
+      </form>
         <section className="signUp">
           <p>Not a member yet?</p>
           <button className="signUpLink">
