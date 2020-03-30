@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 import './login.css'
 
-const URL = 'http://localhost:8080/sessions'
+const URL = 'https://api-project-yoga-poses.herokuapp.com/sessions'
 
-export const LogIn = () => {
+export const LogIn = ({onAuthenticate}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMsg, setErrorMsg] = useState(null)
@@ -29,6 +29,7 @@ export const LogIn = () => {
           } else {
             window.localStorage.setItem('userId', user.userId)
             window.localStorage.setItem('accessToken', user.accessToken)
+            onAuthenticate(user.accessToken) 
             history.push('/Welcome')
           }
       })

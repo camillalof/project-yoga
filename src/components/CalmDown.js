@@ -5,7 +5,7 @@ import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
 import './calmdown.css'
 
-const URL = 'http://https://api-project-yoga-poses.herokuapp.com/users'
+const URL = 'https://api-project-yoga-poses.herokuapp.com/users'
 
 export const CalmDown = () => {
   const [rootImages, setRootImages] = useState([]);
@@ -27,97 +27,114 @@ export const CalmDown = () => {
 
   const history = useHistory()
 
-  {/* AUTHORIZATION */}
-
-  useEffect(() => {
-    fetch(`${URL}/${userId}`, {
-    method: 'GET', 
-    headers: {
-      Authorization: accessToken
-    }
-  })
-  .then()
-  .then((user) => {
-    if (user.loggedOut) {
-      setNotAuthorized(true)
-    } else {
-      setUser(user)
-    }
-  })
-  .catch((err) => {
-    setNotAuthorized(true)
-  })
-  }, [userId, accessToken])
-
-  const handleLogOut = () => {
-    history.push('/login') //return to login page
-    window.localStorage.clear() // clears data
-    setNotAuthorized(true)
-    console.log('accessToken')
-  }
 
   {/* FETCH POSES */}
 
   const fetchRoot = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e07f/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b684048c002389b762/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setRootImages(json)
       })
   } 
   const fetchThroat = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e083/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b766/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setThroatImages(json)
       })
   } 
   const fetchSacral = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e080/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b763/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setSacralImages(json)
       })
   } 
   const fetchSolarPlexus = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e081/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b764/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setSolarPlexusImages(json)
       })
   } 
   const fetchHeart = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e082/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b765/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setHeartImages(json)
       })
   } 
   const fetchThirdEye = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e084/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b767/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setThirdEyeImages(json)
       })
   }
   const fetchCrown = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e085/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b768/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setCrownImages(json)
       })
   }
   const fetchStartPose = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/asana/5e7b66a7b6175e709aa0e0af')
+    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e8248b884048c002389b792', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }   
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setStartPoseImage(json)
       })
   }
   const fetchFinishPose = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/asana/5e7b66a7b6175e709aa0e0b0')
+    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e8248b884048c002389b793', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setFinishPoseImage(json)
       })
   }
@@ -246,9 +263,6 @@ export const CalmDown = () => {
   return (
     <> 
     <div className="carouselContainer">
-      {notAuthorized && 
-        <span className='memberSection'> 'You are not authorized' </span>}
-      {!notAuthorized && 
       <Slider {...settings}>
         {finalPoses.map((image) => {
           return (
@@ -263,12 +277,12 @@ export const CalmDown = () => {
               <p className="description">{image.description}</p>
               <p className="extraMessage">{image.extraMessage}</p> 
               <button onClick={() => history.goBack()} className="backLink">
-              LOG OUT
+                BACK
               </button>
             </div>  
           )  
         })}
-      </Slider>}
+      </Slider>
     </div>
     </>  
   )

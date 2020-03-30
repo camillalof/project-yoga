@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
 import { shuffleAndPick } from '../helpers/shuffleAndPick'
 
-const URL = 'http://https://api-project-yoga-poses.herokuapp.com/chakra'
+const URL = 'https://api-project-yoga-poses.herokuapp.com/chakra'
 
 export const Creativity = () => {
   const [rootImages, setRootImages] = useState([]);
@@ -17,68 +17,116 @@ export const Creativity = () => {
   const [startPoseImage, setStartPoseImage] = useState([]);
   const [finishPoseImage, setFinishPoseImage] = useState([]);
 
+  const accessToken = window.localStorage.getItem('accessToken')
+  const userId = window.localStorage.getItem('userId')
+
   const history = useHistory()
 
   const fetchRoot = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e07f/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b684048c002389b762/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setRootImages(json)
       })
   } 
   const fetchThroat = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e083/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b766/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setThroatImages(json)
       })
   } 
   const fetchSacral = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e080/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b763/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setSacralImages(json)
       })
   } 
   const fetchSolarPlexus = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e081/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b764/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setSolarPlexusImages(json)
       })
   } 
   const fetchHeart = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e082/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b765/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setHeartImages(json)
       })
   } 
   const fetchThirdEye = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e084/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b767/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setThirdEyeImages(json)
       })
   }
   const fetchCrown = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/chakra/5e7b66a7b6175e709aa0e085/asana')
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b768/asana', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setCrownImages(json)
       })
   }
   const fetchStartPose = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/asana/5e7b66a7b6175e709aa0e0af')
+    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e8248b884048c002389b792', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }   
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setStartPoseImage(json)
       })
   }
   const fetchFinishPose = () => {
-    fetch('http://https://api-project-yoga-poses.herokuapp.com/asana/5e7b66a7b6175e709aa0e0b0')
+    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e8248b884048c002389b793', {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken
+      }
+    })
       .then (res => res.json())
-      .then((json) => { 
+      .then(json => { 
         setFinishPoseImage(json)
       })
   }
@@ -94,7 +142,7 @@ export const Creativity = () => {
 
     fetchStartPose()
     fetchFinishPose()
-  }, [])
+  }, [userId, accessToken])
 
   {/* Change the amount of poses per chakra/category here*/} 
   
@@ -165,8 +213,31 @@ export const Creativity = () => {
 
   {/* Settings for carousel here */} 
 
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", color: "black", right: "10%" }}
+        onClick={onClick}
+      />
+    );
+  }
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", color: "black", left: "10%" }}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
+    accessibility: true,
     arrows: true,
+    centerPadding: 0,
     infinite: false, // Stannar på sista
     slidesToShow: 1, // visa en åt gången
     slidesToScroll: 1, // scrolla en framåt
@@ -176,7 +247,9 @@ export const Creativity = () => {
     adaptiveHeight: true,
     className: "center",
     centerMode: true,
-    centerPadding: "60px",
+    useCSS: true,
+    nextArrow: <SampleNextArrow/>,
+    prevArrow: <SamplePrevArrow/>
   } 
 
   return (

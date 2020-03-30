@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './signup.css'
 
-const URL = 'http://localhost:8080/users'
+const URL = 'https://api-project-yoga-poses.herokuapp.com/users'
 
 export const SignUp = () => {
   const [name, setName] = useState('')

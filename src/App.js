@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Intro } from './components/Intro'
@@ -13,6 +13,7 @@ import { CalmDown } from './components/CalmDown'
 import { Creativity } from './components/Creativity'
 
 export const App = () => {
+  const [accessToken, setAccessToken] = useState()
   return (
     <BrowserRouter>
       <main>     
@@ -21,28 +22,28 @@ export const App = () => {
             <Intro/>
           </Route>
           <Route path="/login" exact>
-            <LogIn/>
+            <LogIn onAuthenticate={setAccessToken}/>
           </Route>
           <Route path="/signup" exact>
             <SignUp/>
           </Route>
           <Route path="/welcome" exact>
-            <WelcomePage/>
+            <WelcomePage accessToken={accessToken}/>
           </Route>  
           <Route path="/energy" exact>
-            <Energy/>
+            <Energy accessToken={accessToken}/>
           </Route>
           <Route path="/selfconfidence" exact>
-            <SelfConfidence/>
+            <SelfConfidence accessToken={accessToken}/>
           </Route>
           <Route path="/healing" exact>
-            <Healing/>
+            <Healing accessToken={accessToken}/>
           </Route>
           <Route path="/calmdown" exact>
-            <CalmDown/>
+            <CalmDown accessToken={accessToken}/>
           </Route>
           <Route path="/creativity" exact>
-            <Creativity/>
+            <Creativity accessToken={accessToken}/>
           </Route>
         </Switch>  
       </main>
