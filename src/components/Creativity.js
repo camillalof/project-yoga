@@ -23,7 +23,7 @@ export const Creativity = () => {
   const history = useHistory()
 
   const fetchRoot = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b684048c002389b762/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b20/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -35,7 +35,7 @@ export const Creativity = () => {
       })
   } 
   const fetchThroat = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b766/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b24/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -47,7 +47,7 @@ export const Creativity = () => {
       })
   } 
   const fetchSacral = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b763/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b21/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -59,7 +59,7 @@ export const Creativity = () => {
       })
   } 
   const fetchSolarPlexus = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b764/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b22/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -71,7 +71,7 @@ export const Creativity = () => {
       })
   } 
   const fetchHeart = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b765/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b23/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -83,7 +83,7 @@ export const Creativity = () => {
       })
   } 
   const fetchThirdEye = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b767/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b25/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -95,7 +95,7 @@ export const Creativity = () => {
       })
   }
   const fetchCrown = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e8248b784048c002389b768/asana', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/chakra/5e84a7425879ce0023321b26/asana', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -107,7 +107,7 @@ export const Creativity = () => {
       })
   }
   const fetchStartPose = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e8248b884048c002389b792', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e84a7445879ce0023321b50', {
       method: 'GET',
       headers: {
         Authorization: accessToken
@@ -119,7 +119,7 @@ export const Creativity = () => {
       })
   }
   const fetchFinishPose = () => {
-    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e8248b884048c002389b793', {
+    fetch('https://api-project-yoga-poses.herokuapp.com/asana/5e84a7445879ce0023321b51', {
       method: 'GET',
       headers: {
         Authorization: accessToken
