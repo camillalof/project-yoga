@@ -8,6 +8,6 @@ I started with building a backend app with all the poses, backend for registrer 
 
 If I would of had more time I would of focused more on accessability and used props to create less repetitive code. I also feel that a easier and more structured way to work with the components would of been using styled components instead of vanilla CSS, since that would of been fewer files.
 
-## View it live here
+## View it live here :eyes:
 
 https://projectyoga.netlify.app/ 
