@@ -107,6 +107,10 @@ button.introLogInLink {
   background: transparent; 
 }
 
+button.scroll svg {
+  display: none;
+}
+
 footer {
   display: none;
 }
@@ -161,7 +165,7 @@ h1.introNavH1 {
   position: absolute;
   z-index: inherit;
   font-size: 55px;
-  padding-top: 10%;
+  padding-top: 11%;
 }
 
 h1.introNavH1 {
@@ -217,7 +221,32 @@ ul.aboutSection a{
 button.joinLink {
   display: none;
 }
+button.scroll {
+  display: unset;
+  border: transparent;
+  background: transparent; 
+  position: absolute;
+  top: 30%;
+}
+button.scroll svg {
+  display: unset;
+  width: 20px;
+  height: auto;
+  border: solid black 3px;
+  border-radius: 50%;
+  padding: 1rem;
+}
+button.scroll:hover svg {
+  width: 30px;
+  height: auto;
+  border: solid black 4px;
+}
 Footer {
   display: flex;
 }
+}
+@media (min-width: 1200px) {
+  button.scroll {
+    top: 40%;
+  }
 }

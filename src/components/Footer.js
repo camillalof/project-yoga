@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ReactComponent as Flower } from './Flower.svg';
+import { ReactComponent as DownArrow } from './DownArrow.svg';
 
 import './footer.css'
 

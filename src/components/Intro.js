@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
+
+import { ReactComponent as DownArrow } from './DownArrow.svg';
 
 import { IntroNav } from './IntroNav'
 import { Footer } from './Footer'
@@ -10,6 +12,11 @@ import './intro.css'
 
 export const Intro = () => {
   const history = useHistory() 
+  const myRef = useRef(null);
+
+  const scrollSmoothHandler = () => {
+    myRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
 return (
   <>
@@ -33,8 +40,16 @@ return (
           <p>LOG IN HERE</p>
         </Link>
       </button>
+    </span>
+    <button 
+      type="button"
+      onClick={() => scrollSmoothHandler()} 
+      className="scroll">
+      <DownArrow/>
+    </button>  
+    <span ref={myRef}>
+      <Footer/>
     </span>  
-    <Footer/>
     </section> 
   </> 
   )
