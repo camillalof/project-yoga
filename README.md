@@ -1,4 +1,4 @@
-# Project Yoga 
+# Project Yoga :ok_woman:
 
 A online yoga app Built in React that creates a custom yoga-workout based on your mood. In yoga theory each yogapose is connected to a different chakra or energyfield in the body, that makes the different poses helpful not only for physical exersice but also for mental wellbeing. For example yogaposes that is affecting the sakral chakra helps us with creativity, the poses connected to the solar plexus chakra affect our self confidence and so on. The app uses javascript functions to automaticly fetch random poses connected to the energyfield needed and sort them randomly into a workout-array.   
 
