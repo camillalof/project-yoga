@@ -4,9 +4,9 @@ A online yoga app Built in React that creates a custom yoga-workout based on you
 
 ## How did I do it
 
-I started with building a backend app with all the poses, backend for registrer and log in and images using MongoDB and Mongoose model (you can find the backend here: https://github.com/camillalof/project-mongo-api). Then I fetched it and used react, react routes and react hooks to create the app and authorization. 
+I started with building a backend app with all the poses, backend for registrer and log in and images using MongoDB and Mongoose model (you can find the backend here: https://github.com/camillalof/project-mongo-api). Then I fetched the poses from the database and built functions in javascript that randomly sliced different types of yoga poses and included the into a new array. I later mapped over the new array making the session run automatlicly using neo slick slider. For the overall frontend for the app I used react, react routes and react hooks. I also styled the log in/Registrer pages with inspiration from Neumorphorism design trends.
 
-If I would of had more time I would of focused more on accessability and used props to create less repetitive code. I also feel that a easier way to work with the routs would of been using styled components instead of vanilla CSS.
+If I would of had more time I would of focused more on accessability and used props to create less repetitive code. I also feel that a easier and more structured way to work with the components would of been using styled components instead of vanilla CSS, since that would of been fewer files.
 
 ## View it live here
 
